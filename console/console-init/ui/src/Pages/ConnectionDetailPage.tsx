@@ -1,12 +1,12 @@
 import * as React from "react";
-import { ConnectionDetailHeader } from "src/Components/ConnectionDetail/ConnectionDetailHeader";
-import { PageSection } from "@patternfly/react-core";
+import { ConnectionDetailHeader } from "../Components/ConnectionDetail/ConnectionDetailHeader";
+import { PageSection, PageSectionVariants } from "@patternfly/react-core";
 import {
   ConnectionList,
   IConnection
-} from "src/Components/AddressSpace/ConnectionList";
+} from "../Components/AddressSpace/ConnectionList";
 
-export const ConnectionDetailPage: React.FunctionComponent<any> = () => {
+export function ConnectionDetailPage() {
   const props = {
     hostname: "1.219.2.1.33904",
     containerId: "myapp1",
@@ -52,6 +52,9 @@ export const ConnectionDetailPage: React.FunctionComponent<any> = () => {
   ];
   return (
     <>
+      <PageSection variant={PageSectionVariants.light}>
+        <h1>Connection Detail Page</h1>
+      </PageSection>
       <ConnectionDetailHeader
         hostname={props.hostname}
         containerId={props.containerId}
@@ -68,4 +71,4 @@ export const ConnectionDetailPage: React.FunctionComponent<any> = () => {
       </PageSection>
     </>
   );
-};
+}

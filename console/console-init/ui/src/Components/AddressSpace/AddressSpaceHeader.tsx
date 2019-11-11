@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Dropdown,
   DropdownPosition,
@@ -11,18 +11,18 @@ import {
   SplitItem,
   Card,
   CardHeader,
-  CardBody
-} from "@patternfly/react-core";
-import { css, StyleSheet } from "@patternfly/react-styles";
+  CardBody,
+} from '@patternfly/react-core';
+import { css, StyleSheet } from '@patternfly/react-styles';
 
 const styles = StyleSheet.create({
   flex_right_border: {
-    paddingRight: "1em",
-    borderRight: "0.1em solid",
-    borderRightColor: "lightgrey"
-  }
+    paddingRight: '1em',
+    borderRight: '0.1em solid',
+    borderRightColor: 'lightgrey',
+  },
 });
-export interface AddressSpace {
+export interface IAddressSpace {
   name: string;
   namespace: string;
   createdOn: string;
@@ -30,13 +30,13 @@ export interface AddressSpace {
   onDownload: (name: string) => void;
   onDelete: (name: string) => void;
 }
-export const AddressSpaceHeader: React.FunctionComponent<AddressSpace> = ({
+export const AddressSpaceHeader: React.FunctionComponent<IAddressSpace> = ({
   name,
   namespace,
   createdOn,
   type,
   onDownload,
-  onDelete
+  onDelete,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const onSelect = (result: any) => {
@@ -59,7 +59,7 @@ export const AddressSpaceHeader: React.FunctionComponent<AddressSpace> = ({
       onClick={() => onDelete(name)}
     >
       Delete
-    </DropdownItem>
+    </DropdownItem>,
   ];
   return (
     <Card>

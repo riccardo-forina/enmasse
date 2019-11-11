@@ -8,7 +8,7 @@ import {
 import { CogIcon } from "@patternfly/react-icons";
 import "./NavToolBar.css";
 
-const NavToolBar: React.FC = () => {
+export const NavToolBar: React.FC = () => {
   const [isOpen, onToggle] = useState(false);
 
   const dropdownItems = [
@@ -35,5 +35,3 @@ const NavToolBar: React.FC = () => {
     </React.Fragment>
   );
 };
-
-export default NavToolBar;

@@ -1,34 +1,42 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./App.css";
-import { AppLayout, SwitchWith404, LazyRoute } from "use-patternfly";
-import { useHistory } from "react-router-dom";
-import { Avatar, Brand, Text, TextVariants } from "@patternfly/react-core";
+import "@patternfly/react-core/dist/styles/base.css";
+import avatarImg from "./logo.svg";
 import brandImg from "./brand_logo.svg";
-import NavToolBar from "./Components/NavToolBar/NavToolBar";
+import { NavToolBar } from "./Components/NavToolBar/NavToolBar";
+import { AppLayout, SwitchWith404 } from "use-patternfly";
+import { useHistory, BrowserRouter as Router } from "react-router-dom";
+import { Avatar, Brand, Text, TextVariants } from "@patternfly/react-core";
+import { AppRoutes } from "./AppRoutes";
 
-const getIndexPage = () => import("./Pages/IndexPage");
 const avatar = (
   <React.Fragment>
     <Text component={TextVariants.p}>Ramakrishna Pattnaik</Text>
+    <Avatar src={avatarImg} alt="avatar" />
   </React.Fragment>
 );
 const logo = <Brand src={brandImg} alt="Console Logo" />;
 
 const App: React.FC = () => {
   const history = useHistory();
+  const logoProps = useMemo(
+    () => ({
+      onClick: () => history.push("/")
+    }),
+    [history]
+  );
+
   return (
-    <AppLayout
-      logoProps={{
-        onClick: () => history.push("/")
-      }}
-      logo={logo}
-      avatar={avatar}
-      toolbar={<NavToolBar />}
-    >
-      <SwitchWith404>
-        <LazyRoute path="/" exact={true} getComponent={getIndexPage} />
-      </SwitchWith404>
-    </AppLayout>
+    <SwitchWith404>
+      <AppLayout
+        logoProps={logoProps}
+        logo={logo}
+        avatar={avatar}
+        toolbar={<NavToolBar />}
+      >
+        <AppRoutes />
+      </AppLayout>
+    </SwitchWith404>
   );
 };
 
