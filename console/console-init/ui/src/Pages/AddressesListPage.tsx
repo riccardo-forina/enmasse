@@ -110,7 +110,7 @@ export interface IMetrics {
 
 function AddressesListFunction() {
   const { name, namespace } = useParams();
-  useDocumentTitle("Addresses List");
+  useDocumentTitle("Address List");
   useA11yRouteChange();
 
   const [
