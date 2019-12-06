@@ -119,6 +119,7 @@ export const AddressListPage: React.FunctionComponent<IAddressListPageProps> = (
         }
       });
       setAddressBeingEdited(null);
+      refetch();
     }
   };
   const handleEditChange = (address: IAddress) =>
